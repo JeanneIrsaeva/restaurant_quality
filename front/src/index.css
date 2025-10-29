@@ -1,8 +1,8 @@
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: #0c1b21;
+  font-family: 'Playfair Display', serif;
+  color: #c0b193;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +10,21 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Общие стили для текста */
+.text-primary {
+  color: #c0b193;
+  font-family: "Playfair Display-Medium", serif;
+}
+
+.text-regular {
+  color: #c0b193;
+  font-family: "Playfair Display-Regular", Helvetica;
+}
+
+.border-bottom {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #c0b19359;
 }

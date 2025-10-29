@@ -1,0 +1,39 @@
+.header {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #c0b19359;
+  height: 115px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 180px;
+}
+
+.header-logo img {
+  height: 70px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 135px;
+}
+
+.nav-item {
+  color: #c0b193;
+  font-family: 'Source Serif 4', sans-serif;
+  font-size: 32px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #e6d8c0;
+}
+
+.header-like img{
+  cursor: pointer;
+  height: 48px;
+}

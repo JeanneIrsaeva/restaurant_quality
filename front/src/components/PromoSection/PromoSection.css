@@ -1,0 +1,90 @@
+.promo-section {
+  min-height: 788px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.promo-content {
+  flex: 1;
+  max-width: 567px;
+}
+
+.promo-title {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 56px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.promo-description {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.promo-button {
+  align-items: center;
+  border: 1px solid;
+  border-color: #c0b193;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 15px 20px;
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 62px;
+
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.promo-button:hover {
+  background-color: #c0b19326;
+  box-shadow: 0px 4px 12px rgba(192, 177, 147, 0.2);
+}
+
+.promo-image {
+  flex-shrink: 0;
+  width: 473px;
+  height: 608px;
+  box-shadow: 0px 4px 15px #c0b19326;
+  position: relative;
+}
+
+.image-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #332c1f66;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

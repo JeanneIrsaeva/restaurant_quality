@@ -1,0 +1,65 @@
+.methodology-section {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #c0b19359;
+  height: 613px;
+  position: relative;
+}
+
+.methodology-title {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 56px;
+  font-weight: 500;
+  left: 180px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 90px;
+}
+
+.methodology-description {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 180px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 190px;
+  width: 455px;
+}
+
+.methodology-item {
+  background-color: #ffffff0d;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 204px;
+  position: absolute;
+  width: 280px;
+  padding: 20px 15px;
+}
+
+.methodology-item-title {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 24px;
+  font-weight: 500;
+  height: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 100%;
+}
+
+.methodology-item-description {
+  color: #c0b193;
+  font-family: "Playfair Display", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  height: 112px;
+  letter-spacing: 0;
+  line-height: normal;
+  width: 100%;
+}
