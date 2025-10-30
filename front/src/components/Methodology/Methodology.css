@@ -1,9 +1,20 @@
 .methodology-section {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: #c0b19359;
-  height: 613px;
-  position: relative;
+  border-bottom: 1px solid #c0b19359;
+  padding: 90px 180px;
+  min-height: 613px;
+}
+
+.methodology-content {
+  display: grid;
+  grid-template-columns: 455px 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.methodology-text {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
 }
 
 .methodology-title {
@@ -11,11 +22,8 @@
   font-family: "Playfair Display", Helvetica;
   font-size: 56px;
   font-weight: 500;
-  left: 180px;
-  letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 90px;
+  margin: 0;
 }
 
 .methodology-description {
@@ -23,12 +31,15 @@
   font-family: "Playfair Display", Helvetica;
   font-size: 24px;
   font-weight: 400;
-  left: 180px;
-  letter-spacing: 0;
   line-height: normal;
-  position: absolute;
-  top: 190px;
-  width: 455px;
+  margin: 0;
+  width: 100%;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
 }
 
 .methodology-item {
@@ -36,10 +47,13 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 204px;
-  position: absolute;
-  width: 280px;
   padding: 20px 15px;
+  height: 204px;
+  width: 280px;
+}
+
+.methodology-item:last-child {
+  margin-right: 180px;
 }
 
 .methodology-item-title {
@@ -47,10 +61,8 @@
   font-family: "Playfair Display", Helvetica;
   font-size: 24px;
   font-weight: 500;
-  height: 32px;
-  letter-spacing: 0;
   line-height: normal;
-  width: 100%;
+  margin: 0;
 }
 
 .methodology-item-description {
@@ -58,8 +70,6 @@
   font-family: "Playfair Display", Helvetica;
   font-size: 16px;
   font-weight: 400;
-  height: 112px;
-  letter-spacing: 0;
   line-height: normal;
-  width: 100%;
+  margin: 0;
 }

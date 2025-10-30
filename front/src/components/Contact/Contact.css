@@ -6,13 +6,12 @@
   flex-direction: column;
   gap: 25px;
   height: 400px;
-  width: 1440px;
   margin: 0 auto;
 }
 
 .contact-title {
   color: #c0b193;
-  font-family: "Playfair Display-Medium", Helvetica;
+  font-family: "Playfair Display", Helvetica;
   font-size: 56px;
   font-weight: 500;
   height: 75px;
@@ -25,7 +24,7 @@
 
 .contact-description {
   color: #c0b193;
-  font-family: "Playfair Display-Medium", Helvetica;
+  font-family: "Playfair Display", Helvetica;
   font-size: 24px;
   font-weight: 500;
   height: 63px;
@@ -37,7 +36,7 @@
 
 .contact-email {
   color: #c0b193;
-  font-family: "Playfair Display-SemiBold", Helvetica;
+  font-family: "Playfair Display", Helvetica;
   font-size: 24px;
   font-weight: 600;
   height: 32px;

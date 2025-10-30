@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./FAQ.css";
+import StrelkaImg from './../../img/icons/Strelka.svg'; 
 
 export const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState(2);
-
+  const [activeIndex, setActiveIndex] = useState(null);
   const faqItems = [
     {
       question: "Чем ваш сервис отличается от ресторанных блогеров и платформ вроде TripAdvisor?",
@@ -39,9 +39,11 @@ export const FAQ = () => {
           >
             <p className="faq-question">{item.question}</p>
             <div className="faq-arrow">
-              <span className={`arrow-icon ${activeIndex === index ? 'rotated' : ''}`}>
-                ▼
-              </span>
+              <img 
+                src={StrelkaImg} 
+                alt="Toggle" 
+                className={`arrow-icon ${activeIndex === index ? 'rotated' : ''}`}
+              />
             </div>
           </div>
           

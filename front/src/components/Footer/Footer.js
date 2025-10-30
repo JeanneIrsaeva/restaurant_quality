@@ -1,13 +1,10 @@
 import React from "react";
 import "./Footer.css";
+import logoImg from './../../img/icons/logo.svg'
 
-export const Footer = ({
-  className = "",
-  vectorVector = "/images/vector-1-2.svg",
-  line = "/images/line-1.svg",
-}) => {
+export const Footer = () => {
   return (
-    <footer className={`footer ${className}`}>
+    <footer className="footer">
       <div className="footer-nav">
         <div className="footer-nav-item">Главная</div>
         <div className="footer-nav-item">Каталог</div>
@@ -15,7 +12,7 @@ export const Footer = ({
       </div>
       
       <div className="footer-logo">
-        <img src={vectorVector} alt="Verve Logo" className="footer-logo-img" />
+        <img src={logoImg} alt="Logo" className="footer-logo-img" />
       </div>
       
       <div className="footer-contact">exampleaddress@mail.ru</div>
@@ -24,8 +21,6 @@ export const Footer = ({
         <p className="footer-copyright">© Velve 2024. Все права защищены.</p>
         <div className="footer-privacy">Политика конфиденциальности</div>
       </div>
-      
-      <img className="footer-divider" alt="Line" src={line} />
     </footer>
   );
 };

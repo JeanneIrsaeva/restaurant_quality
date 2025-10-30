@@ -4,11 +4,11 @@ import "./Contact.css";
 export const Contact = () => {
   return (
     <section className="contact-section">
-      <div className="contact-title">Any other questions?</div>
+      <div className="contact-title">Остались вопросы?</div>
 
       <p className="contact-description">
-        We are ready to talk in detail about cooperation and answer any of your questions.
-        Use email to contact us:
+        Мы готовы подробно рассказать о сотрудничестве и ответить 
+        на любые ваши вопросы. Для связи используйте электронную почту:
       </p>
 
       <a href="mailto:partner@verve.ru" className="contact-email">
