@@ -1,0 +1,259 @@
+.venue-page {
+    background: #0D1C22;
+    min-height: 100vh;
+    border-bottom: 1px solid rgba(192, 177, 147, 0.35);
+}
+
+.venue-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 180px;
+
+}
+
+.venue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 40px 0;
+}
+
+.venue-title-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.venue-title {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+
+}
+
+.star {
+    font-size: 27px;
+}
+
+.rating-value {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(192, 177, 147, 0.35);
+    margin: 90px 0;
+}
+
+
+.description-section {
+    margin-bottom: 60px;
+}
+
+.description-text {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto 60px auto;
+
+}
+
+.recommendations-section {
+    margin-bottom: 90px;
+}
+
+.section-title {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.recommendation-card {
+    text-align: left;
+}
+
+.recommendation-image {
+    width: 100%;
+    height: 341px;
+    width: 341px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.recommendation-text {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 1.0;
+}
+
+
+.section-title-location {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.0;
+    text-align: left;
+}
+
+
+.location-quote-section {
+    margin-bottom: 90px;
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.location-quote-container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+
+.quote-content {
+    flex: 1;
+}
+
+.quote-block {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 144px;
+    margin-top: 25px;
+}
+
+.quote-text {
+    color: #C0B193;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: oblique;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+}
+
+.map-block {
+    width: 562px;
+    height: 430px;
+    flex-shrink: 0;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background: rgba(192, 177, 147, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #C0B193;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 24px;
+    border: 1px solid rgba(192, 177, 147, 0.3);
+}
+
+@media (max-width: 1440px) {
+    .venue-container {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .venue-container {
+        padding: 0 60px;
+    }
+
+    .venue-title {
+        font-size: 36px;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .location-quote-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .map-block {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .venue-container {
+        padding: 0 20px;
+    }
+
+    .venue-header {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .venue-title {
+        font-size: 28px;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .description-text {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .quote-block {
+        padding: 20px;
+    }
+
+    .quote-text {
+        font-size: 18px;
+    }
+}
