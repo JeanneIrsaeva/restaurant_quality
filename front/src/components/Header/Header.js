@@ -1,23 +1,29 @@
-import "./Header.css";
-import logoImg from './../../img/icons/logo.svg'
-import likeImg from './../../img/icons/like.svg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
 
-export const Header = () => {
-  return (
-    <header className="header">
-      <div className="header-logo">
-        <img src={logoImg} alt="Logo" />
-      </div>
-      <nav className="header-nav">
-        <div className="nav-item">Главная</div>
-        <div className="nav-item">Каталог</div>
-        <div className="nav-item">О нас</div>
-      </nav>
-      <div className="header-like">
-        <div className="like-icon">
-          <img src={likeImg} alt="like" />
-        </div>
-      </div>
-    </header>
-  );
+const Header = () => {
+    return (
+        <header className="header">
+            <div className="header-container">
+                <div className="logo">
+                    <Link to="/">
+                        <img src="/assets/svg/logo.svg" alt="CityGuide" className="logo-img" />
+                    </Link>
+                </div>
+
+                <nav className="nav">
+                    <Link to="/" className="nav-link">Главная</Link>
+                    <Link to="/catalog" className="nav-link">Каталог</Link>
+                    <Link to="/venue" className="nav-link">О нас</Link>
+                </nav>
+
+                <div className="cart">
+                    <img src="/assets/svg/cart.svg" alt="Корзина" className="cart-icon" />
+                </div>
+            </div>
+        </header>
+    );
 };
+
+export default Header;
