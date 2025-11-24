@@ -1,6 +1,7 @@
 import "./Header.css";
-import logoImg from './../../img/icons/logo.svg'
-import likeImg from './../../img/icons/like.svg'
+import logoImg from "./../../img/icons/logo.svg";
+import likeImg from "./../../img/icons/like.svg";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -9,9 +10,15 @@ export const Header = () => {
         <img src={logoImg} alt="Logo" />
       </div>
       <nav className="header-nav">
-        <div className="nav-item">Главная</div>
-        <div className="nav-item">Каталог</div>
-        <div className="nav-item">О нас</div>
+        <Link className="nav-item" to="/">
+          Главная
+        </Link>
+        <Link className="nav-item" to="/catalog">
+          Каталог
+        </Link>
+        <Link className="nav-item" to="/about">
+          О нас
+        </Link>
       </nav>
       <div className="header-like">
         <div className="like-icon">
