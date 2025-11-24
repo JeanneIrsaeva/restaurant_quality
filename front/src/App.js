@@ -8,6 +8,7 @@ import { Contact } from './components/Contact/Contact';
 import { FAQ } from './components/FAQ/FAQ';
 import { Methodology } from './components/Methodology/Methodology';
 import { PromoSection } from './components/PromoSection/PromoSection';
+import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import './App.css';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             } />
             <Route path="/venue" element={<VenuePage />} />
 
-            <Route path="/catalog" element={<div style={{ padding: '50px', textAlign: 'center', color: '#C0B193' }}>Каталог - в разработке</div>} />
+            <Route path="/catalog" element={<CatalogPage />} />
           </Routes>
         </main>
         <Footer />
@@ -36,5 +37,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
