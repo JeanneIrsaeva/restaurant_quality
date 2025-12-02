@@ -1,13 +1,6 @@
 fastapi
 uvicorn
 sqlalchemy
-alembic
+aiosqlite
 pydantic
-python-multipart
-typer
-rich
-questionary
-websockets
-python-jose[cryptography]
-passlib[bcrypt]
-python-multipart
+pydantic-core
