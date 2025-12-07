@@ -28,7 +28,7 @@ function App() {
                 <Contact />
               </>
             } />
-            <Route path="/venue" element={<VenuePage />} />
+            <Route path="/venue/:id" element={<VenuePage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
           </Routes>

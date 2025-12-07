@@ -1,36 +1,42 @@
-
 import React, { useState, useEffect } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { favoritesService } from '../../utils/favorites';
 import { RestaurantCard } from '../../components/Card/RestaurantCard';
 import heartFilledIcon from '../../assets/icons/heart2.svg';
 import './FavoritesPage.css';
 
 const FavoritesPage = () => {
-    const [favoriteIds, setFavoriteIds] = useState([]);
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const ids = favoritesService.getAll();
-        setFavoriteIds(ids);
+        loadFavorites();
+    }, []);
 
-        if (ids.length > 0) {
-            const mockRestaurants = ids.map((id, index) => ({
-                id,
-                name: `Ресторан ${id.substring(0, 8)}`,
-                country: 'Россия',
-                city: 'Москва',
-                image: '/assets/images/venue.jpg',
-                rating: 4.0 + (index * 0.5)
-            }));
-            setRestaurants(mockRestaurants);
+    const loadFavorites = async () => {
+        console.log("=== Загрузка избранного ===");
+        setLoading(true);
+
+        try {
+            const favoritesData = await favoritesService.getFavoritesDetails();
+            console.log("Данные получены:", favoritesData);
+            setRestaurants(favoritesData);
+        } catch (error) {
+            console.error("Ошибка загрузки избранного:", error);
+            setRestaurants([]);
         }
 
         setLoading(false);
-    }, []);
+    };
+
+    const handleRemove = (id) => {
+        console.log("Удаляем из избранного:", id);
+        favoritesService.remove(id);
+        loadFavorites();
+    };
 
     if (loading) {
-        return <div className="favorites-loading">Загрузка...</div>;
+        return <div className="favorites-loading">Загрузка избранного...</div>;
     }
 
     return (
@@ -38,7 +44,7 @@ const FavoritesPage = () => {
             <div className="favorites-container">
                 <h1 className="favorites-title">Избранное</h1>
 
-                {favoriteIds.length === 0 ? (
+                {restaurants.length === 0 ? (
                     <div className="favorites-empty">
                         <img
                             src={heartFilledIcon}
@@ -47,23 +53,18 @@ const FavoritesPage = () => {
                         />
                         <h2>В избранном пока пусто</h2>
                         <p>Добавляйте понравившиеся заведения, нажимая на сердечко</p>
-                        <a href="/catalog" className="browse-button">Перейти в каталог</a>
+                        <RouterLink to="/catalog" className="browse-button">Перейти в каталог</RouterLink>
                     </div>
                 ) : (
-                    <>
-                        <div className="favorites-count">
-                            Найдено заведений: <span>{restaurants.length}</span>
-                        </div>
-
-                        <div className="favorites-grid">
-                            {restaurants.map(restaurant => (
-                                <RestaurantCard
-                                    key={restaurant.id}
-                                    restaurant={restaurant}
-                                />
-                            ))}
-                        </div>
-                    </>
+                    <div className="favorites-grid">
+                        {restaurants.map(restaurant => (
+                            <RestaurantCard
+                                key={restaurant.id}
+                                restaurant={restaurant}
+                                onRemove={handleRemove}
+                            />
+                        ))}
+                    </div>
                 )}
             </div>
         </div>
