@@ -6,6 +6,9 @@ import LocationInfo from '../../components/LocationInfo/LocationInfo';
 import YandexMap from '../../components/YandexMap/YandexMap';
 import './VenuePage.css';
 
+import likeIcon from '../../assets/icons/like.svg';
+import heartFilledIcon from '../../assets/icons/heart2.svg';
+
 const VenuePage = () => {
     const [isFavorite, setIsFavorite] = useState(false);
     const galleryImages = [
@@ -48,16 +51,12 @@ const VenuePage = () => {
                     </div>
 
                     <button className="favorite-btn" onClick={toggleFavorite}>
-                        <svg
+                        <img
+                            src={isFavorite ? heartFilledIcon : likeIcon}
+                            alt="Добавить в избранное"
                             width="32"
                             height="32"
-                            viewBox="0 0 24 24"
-                            fill={isFavorite ? "#C0B193" : "none"}
-                            stroke="#C0B193"
-                            strokeWidth="2"
-                        >
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                        </svg>
+                        />
                     </button>
                 </div>
 
