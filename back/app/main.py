@@ -73,6 +73,32 @@ async def get_establishments(
         pages=result["pages"]
     )
 
+@app.get("/establishments/search", response_model=EstablishmentListResponse)
+async def search_establishments(
+    q: str = Query(..., min_length=2, description="Поисковый запрос (минимум 2 символа)"),
+    limit: int = Query(10, ge=1, le=50, description="Лимит результатов (1-50)"),
+    db: Session = Depends(get_db)
+):
+    if len(q.strip()) < 2:
+        raise HTTPException(
+            status_code=400, 
+            detail="Поисковый запрос должен содержать минимум 2 символа"
+        )
+    
+    query = db.query(Establishment).filter(
+        Establishment.is_published == True,
+        Establishment.name.ilike(f"%{q}%") 
+    ).order_by(Establishment.rating.desc()).limit(limit)
+    
+    establishments = query.all()
+    
+    return EstablishmentListResponse(
+        establishments=establishments,
+        total=len(establishments),
+        page=1,
+        pages=1
+    )
+
 @app.get("/establishments/{establishment_id}", response_model=EstablishmentResponse)
 async def get_establishment(establishment_id: str, db: Session = Depends(get_db)):
     establishment = EstablishmentCRUD.get_establishment_by_id(db, establishment_id)
@@ -109,6 +135,8 @@ async def get_tags(db: Session = Depends(get_db)):
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+
 
 if __name__ == "__main__":
     import uvicorn
