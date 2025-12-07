@@ -157,6 +157,39 @@ async def create_application(
             status_code=500, 
             detail="Ошибка при отправке заявки. Пожалуйста, попробуйте позже."
         )
+    
+@app.get("/establishments/by-ids", response_model=List[EstablishmentResponse])
+async def get_establishments_by_ids(
+    ids: str = Query(..., description="Список ID через запятую"),
+    db: Session = Depends(get_db)
+):
+   
+    if not ids:
+        return []
+    
+    id_list = [id.strip() for id in ids.split(',') if id.strip()]
+    
+    if not id_list:
+        return []
+    
+    if len(id_list) > 100:
+        raise HTTPException(
+            status_code=400,
+            detail="Максимально 100 ID за один запрос"
+        )
+    
+    establishments = db.query(Establishment)\
+        .filter(Establishment.id.in_(id_list))\
+        .filter(Establishment.is_published == True)\
+        .all()
+    
+    establishment_dict = {e.id: e for e in establishments}
+    ordered_establishments = [
+        establishment_dict[id] for id in id_list 
+        if id in establishment_dict
+    ]
+    
+    return ordered_establishments
 
 if __name__ == "__main__":
     import uvicorn
