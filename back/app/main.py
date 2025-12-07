@@ -4,11 +4,11 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 from .database import get_db, Base, engine 
-from .models import Establishment, EstablishmentType, Category, Country, Tag  
+from .models import Establishment, EstablishmentType, Category, Country, Tag, EstablishmentApplication
 from .schemas import (  
     EstablishmentResponse, EstablishmentListResponse, CatalogFilterParams,
     FilterOptionsResponse, EstablishmentTypeResponse, CategoryResponse,
-    CountryResponse, TagResponse, OperationResponse
+    CountryResponse, TagResponse, OperationResponse, ApplicationCreate
 )
 from .crud import EstablishmentCRUD, ReferenceDataCRUD  
 
@@ -73,6 +73,32 @@ async def get_establishments(
         pages=result["pages"]
     )
 
+@app.get("/establishments/search", response_model=EstablishmentListResponse)
+async def search_establishments(
+    q: str = Query(..., min_length=2, description="Поисковый запрос (минимум 2 символа)"),
+    limit: int = Query(10, ge=1, le=50, description="Лимит результатов (1-50)"),
+    db: Session = Depends(get_db)
+):
+    if len(q.strip()) < 2:
+        raise HTTPException(
+            status_code=400, 
+            detail="Поисковый запрос должен содержать минимум 2 символа"
+        )
+    
+    query = db.query(Establishment).filter(
+        Establishment.is_published == True,
+        Establishment.name.ilike(f"%{q}%") 
+    ).order_by(Establishment.rating.desc()).limit(limit)
+    
+    establishments = query.all()
+    
+    return EstablishmentListResponse(
+        establishments=establishments,
+        total=len(establishments),
+        page=1,
+        pages=1
+    )
+
 @app.get("/establishments/{establishment_id}", response_model=EstablishmentResponse)
 async def get_establishment(establishment_id: str, db: Session = Depends(get_db)):
     establishment = EstablishmentCRUD.get_establishment_by_id(db, establishment_id)
@@ -109,6 +135,61 @@ async def get_tags(db: Session = Depends(get_db)):
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
+
+
+
+@app.post("/applications")
+async def create_application(
+    application: ApplicationCreate,
+    db: Session = Depends(get_db)
+):
+    try:
+        db_application = EstablishmentApplication(**application.dict())
+        db.add(db_application)
+        db.commit()
+        
+        return {
+            "success": True,
+            "message": "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время."
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, 
+            detail="Ошибка при отправке заявки. Пожалуйста, попробуйте позже."
+        )
+    
+@app.get("/establishments/by-ids", response_model=List[EstablishmentResponse])
+async def get_establishments_by_ids(
+    ids: str = Query(..., description="Список ID через запятую"),
+    db: Session = Depends(get_db)
+):
+   
+    if not ids:
+        return []
+    
+    id_list = [id.strip() for id in ids.split(',') if id.strip()]
+    
+    if not id_list:
+        return []
+    
+    if len(id_list) > 100:
+        raise HTTPException(
+            status_code=400,
+            detail="Максимально 100 ID за один запрос"
+        )
+    
+    establishments = db.query(Establishment)\
+        .filter(Establishment.id.in_(id_list))\
+        .filter(Establishment.is_published == True)\
+        .all()
+    
+    establishment_dict = {e.id: e for e in establishments}
+    ordered_establishments = [
+        establishment_dict[id] for id in id_list 
+        if id in establishment_dict
+    ]
+    
+    return ordered_establishments
 
 if __name__ == "__main__":
     import uvicorn
