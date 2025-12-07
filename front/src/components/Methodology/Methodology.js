@@ -23,23 +23,25 @@ export const Methodology = () => {
 
   return (
     <section className="methodology-section">
-      <div className="methodology-content">
-        <div className="methodology-text">
-          <h2 className="methodology-title">Методология</h2>
-          <p className="methodology-description">
-            Наша методология — это протокол, превращающий гастрономический опыт в
-            структурированные данные. Прозрачность и системность — основа нашего
-            доверия.
-          </p>
-        </div>
+      <div className="methodology-container">
+        <div className="methodology-content">
+          <div className="methodology-text">
+            <h2 className="methodology-title">Методология</h2>
+            <p className="methodology-description">
+              Наша методология — это протокол, превращающий гастрономический опыт в
+              структурированные данные. Прозрачность и системность — основа нашего
+              доверия.
+            </p>
+          </div>
 
-        <div className="methodology-grid">
-          {methodologyItems.map((item, index) => (
-            <div key={index} className="methodology-item">
-              <div className="methodology-item-title">{item.title}</div>
-              <p className="methodology-item-description">{item.description}</p>
-            </div>
-          ))}
+          <div className="methodology-grid">
+            {methodologyItems.map((item, index) => (
+              <div key={index} className="methodology-item">
+                <div className="methodology-item-title">{item.title}</div>
+                <p className="methodology-item-description">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

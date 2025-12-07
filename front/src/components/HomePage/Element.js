@@ -7,14 +7,27 @@ import { Contact } from "../Contact/Contact";
 import { Footer } from "../Footer/Footer";
 import "./HomePage.css";
 
-export const Element = () => {
+export const HomePage = () => {
   return (
     <div className="home-page">
       <Header />
-      <HeroSection />
-      <Methodology />
-      <FAQ />
-      <Contact />
+
+      <main className="home-container">
+        <HeroSection />
+
+        <div className="home-section section-padding">
+          <Methodology />
+        </div>
+
+        <div className="home-section section-padding">
+          <FAQ />
+        </div>
+
+        <div className="home-section section-padding">
+          <Contact />
+        </div>
+      </main>
+
       <Footer />
     </div>
   );

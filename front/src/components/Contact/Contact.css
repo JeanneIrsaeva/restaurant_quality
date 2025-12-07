@@ -1,53 +1,110 @@
 .contact-section {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-color: #c0b19359;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  height: 400px;
+  padding: 90px 0;
+  background: #0D1C22;
+  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
+}
+
+.contact-container {
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 180px;
 }
 
 .contact-title {
-  color: #c0b193;
-  font-family: "Playfair Display", Helvetica;
+  color: #C0B193;
+  font-family: 'Playfair Display', serif;
   font-size: 56px;
-  font-weight: 500;
-  height: 75px;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-left: 180px;
-  margin-top: 90px;
-  width: 809px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  text-align: left;
 }
 
 .contact-description {
-  color: #c0b193;
-  font-family: "Playfair Display", Helvetica;
+  color: #C0B193;
+  font-family: 'Playfair Display', serif;
   font-size: 24px;
-  font-weight: 500;
-  height: 63px;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-left: 180px;
-  width: 910px;
+  font-weight: 200;
+  line-height: 32px;
+  margin-bottom: 25px;
+  max-width: 910px;
+  text-align: left;
 }
 
 .contact-email {
-  color: #c0b193;
-  font-family: "Playfair Display", Helvetica;
+  color: #C0B193;
+  font-family: 'Playfair Display', serif;
   font-size: 24px;
-  font-weight: 600;
-  height: 32px;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-left: 180px;
-  text-decoration: underline;
-  width: 195px;
-  transition: color 0.3s ease;
+  font-weight: 400;
+  text-decoration: none;
+  border-bottom: 0.5px solid #C0B193;
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  display: inline-block;
 }
 
 .contact-email:hover {
   color: #e6d8c0;
+  border-color: #e6d8c0;
+}
+
+
+@media (max-width: 1440px) {
+  .contact-container {
+    padding: 0 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .contact-container {
+    padding: 0 60px;
+  }
+
+  .contact-title {
+    font-size: 48px;
+  }
+
+  .contact-description {
+    font-size: 22px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 0 20px;
+  }
+
+  .contact-title {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  .contact-description {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+
+  .contact-email {
+    font-size: 20px;
+  }
+
+  .contact-section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-title {
+    font-size: 28px;
+  }
+
+  .contact-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .contact-email {
+    font-size: 18px;
+  }
 }

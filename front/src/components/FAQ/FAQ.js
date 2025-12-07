@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FAQ.css";
-import StrelkaImg from './../../img/icons/Strelka.svg'; 
+import StrelkaImg from './../../img/icons/Strelka.svg';
 
 export const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -29,31 +29,33 @@ export const FAQ = () => {
 
   return (
     <section className="faq-section">
-      <div className="faq-title">FAQs</div>
+      <div className="faq-container">
+        <h2 className="faq-title">FAQs</h2>
 
-      {faqItems.map((item, index) => (
-        <div key={index} className="faq-item-wrapper">
-          <div 
-            className={`faq-item ${activeIndex === index ? 'active' : ''}`}
-            onClick={() => toggleAccordion(index)}
-          >
-            <p className="faq-question">{item.question}</p>
-            <div className="faq-arrow">
-              <img 
-                src={StrelkaImg} 
-                alt="Toggle" 
-                className={`arrow-icon ${activeIndex === index ? 'rotated' : ''}`}
-              />
+        {faqItems.map((item, index) => (
+          <div key={index} className="faq-item-wrapper">
+            <div
+              className={`faq-item ${activeIndex === index ? 'active' : ''}`}
+              onClick={() => toggleAccordion(index)}
+            >
+              <p className="faq-question">{item.question}</p>
+              <div className="faq-arrow">
+                <img
+                  src={StrelkaImg}
+                  alt="Toggle"
+                  className={`arrow-icon ${activeIndex === index ? 'rotated' : ''}`}
+                />
+              </div>
             </div>
+
+            {activeIndex === index && item.answer && (
+              <div className="faq-answer">
+                <p>{item.answer}</p>
+              </div>
+            )}
           </div>
-          
-          {activeIndex === index && item.answer && (
-            <div className="faq-answer">
-              <p>{item.answer}</p>
-            </div>
-          )}
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 };
