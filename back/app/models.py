@@ -74,3 +74,13 @@ class Establishment(Base):
     __table_args__ = (
         CheckConstraint('rating >= 0 AND rating <= 5', name='rating_range_check'),
     )
+class EstablishmentApplication(Base):
+    __tablename__ = "establishment_applications"
+    
+    id = Column(String, primary_key=True, default=lambda: str(uuid.uuid4()))
+    name = Column(String, nullable=False)                    
+    city = Column(String, nullable=False)                    
+    contact_person = Column(String, nullable=False)          
+    contact_phone = Column(String, nullable=False)           
+    contact_email = Column(String, nullable=False)                                       
+    created_at = Column(DateTime, default=datetime.utcnow)   

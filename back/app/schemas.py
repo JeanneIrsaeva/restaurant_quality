@@ -92,3 +92,10 @@ class OperationResponse(BaseModel):
     success: bool
     message: str
     data: Optional[dict] = None
+
+class ApplicationCreate(BaseModel):
+    name: str                    
+    city: str                    
+    contact_person: str          
+    contact_phone: str           
+    contact_email: EmailStr

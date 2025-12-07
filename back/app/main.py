@@ -4,11 +4,11 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 from .database import get_db, Base, engine 
-from .models import Establishment, EstablishmentType, Category, Country, Tag  
+from .models import Establishment, EstablishmentType, Category, Country, Tag, EstablishmentApplication
 from .schemas import (  
     EstablishmentResponse, EstablishmentListResponse, CatalogFilterParams,
     FilterOptionsResponse, EstablishmentTypeResponse, CategoryResponse,
-    CountryResponse, TagResponse, OperationResponse
+    CountryResponse, TagResponse, OperationResponse, ApplicationCreate
 )
 from .crud import EstablishmentCRUD, ReferenceDataCRUD  
 
@@ -137,6 +137,26 @@ async def health_check():
     return {"status": "healthy"}
 
 
+
+@app.post("/applications")
+async def create_application(
+    application: ApplicationCreate,
+    db: Session = Depends(get_db)
+):
+    try:
+        db_application = EstablishmentApplication(**application.dict())
+        db.add(db_application)
+        db.commit()
+        
+        return {
+            "success": True,
+            "message": "Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время."
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, 
+            detail="Ошибка при отправке заявки. Пожалуйста, попробуйте позже."
+        )
 
 if __name__ == "__main__":
     import uvicorn
