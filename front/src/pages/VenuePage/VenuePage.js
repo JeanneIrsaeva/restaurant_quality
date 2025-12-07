@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Gallery from '../../components/Gallery/Gallery';
 import RatingTable from '../../components/RatingTable/RatingTable';
@@ -8,8 +8,11 @@ import './VenuePage.css';
 
 import likeIcon from '../../assets/icons/like.svg';
 import heartFilledIcon from '../../assets/icons/heart2.svg';
+import { favoritesService } from '../../utils/favorites';
 
 const VenuePage = () => {
+    const establishmentId = 'claude-monet';
+
     const [isFavorite, setIsFavorite] = useState(false);
     const galleryImages = [
         '/assets/images/venue.jpg',
@@ -31,8 +34,41 @@ const VenuePage = () => {
         }
     ];
 
+
+    useEffect(() => {
+        const checkFavoriteStatus = () => {
+            const favoriteStatus = favoritesService.isFavorite(establishmentId);
+            setIsFavorite(favoriteStatus);
+        };
+
+        checkFavoriteStatus();
+
+
+        const handleStorageChange = (e) => {
+            if (e.key === 'verve_favorites') {
+                checkFavoriteStatus();
+            }
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, [establishmentId]);
+
     const toggleFavorite = () => {
-        setIsFavorite(!isFavorite);
+        if (isFavorite) {
+
+            favoritesService.remove(establishmentId);
+            setIsFavorite(false);
+            console.log('Удалено из избранного:', establishmentId);
+        } else {
+
+            favoritesService.add(establishmentId);
+            setIsFavorite(true);
+            console.log('Добавлено в избранное:', establishmentId);
+        }
     };
 
     return (
@@ -53,7 +89,7 @@ const VenuePage = () => {
                     <button className="favorite-btn" onClick={toggleFavorite}>
                         <img
                             src={isFavorite ? heartFilledIcon : likeIcon}
-                            alt="Добавить в избранное"
+                            alt={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
                             width="32"
                             height="32"
                         />

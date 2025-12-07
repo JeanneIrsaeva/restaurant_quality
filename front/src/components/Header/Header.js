@@ -19,7 +19,9 @@ const Header = () => {
                 </nav>
 
                 <div className="cart">
-                    <img src="/assets/svg/cart.svg" alt="Корзина" className="cart-icon" />
+                    <Link to="/favorites" className="nav-link">
+                        <img src="/assets/svg/cart.svg" alt="Корзина" className="cart-icon" />
+                    </Link>
                 </div>
             </div>
         </header>
