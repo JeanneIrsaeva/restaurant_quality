@@ -1,1 +1,6 @@
 "package-lock.json" 
+__pycache__/
+*.pyc
+*.db
+*.sqlite3
+establishments.db
