@@ -1,7 +1,24 @@
 import React from 'react';
 import './LocationInfo.css';
 
-const LocationInfo = () => {
+const LocationInfo = ({ address, city, phone, hours, website }) => {
+    const parseHours = (hoursString) => {
+        if (!hoursString || !hoursString.includes('-')) {
+            return {
+                weekday: '12:00 – 23:00',
+                weekend: '12:00 – 02:00'
+            };
+        }
+
+        const [open, close] = hoursString.split('-');
+        return {
+            weekday: `${open} – ${close}`,
+            weekend: `${open} – 02:00`
+        };
+    };
+
+    const hoursData = parseHours(hours);
+
     return (
         <div className="location-section">
             <div className="location-container">
@@ -13,12 +30,12 @@ const LocationInfo = () => {
                             <div className="time-row">
                                 <p className="days">Понедельник - Четверг</p>
                                 <div className="time-separator"></div>
-                                <p className="hours">10:00 – 23:00</p>
+                                <p className="hours">{hoursData.weekday}</p>
                             </div>
                             <div className="time-row">
                                 <p className="days">Пятница - Воскресенье</p>
                                 <div className="time-separator"></div>
-                                <p className="hours">10:00 – 02:00</p>
+                                <p className="hours">{hoursData.weekend}</p>
                             </div>
                         </div>
 
@@ -26,23 +43,30 @@ const LocationInfo = () => {
                             <div className="contact-item">
                                 <img src="/assets/svg/map.svg" alt="Адрес" className="contact-icon" />
                                 <div>
-                                    <p className="address">Россия, Москва</p>
-                                    <p className="address">ул. Петровка, 28</p>
+                                    <p className="address">{city || 'Москва'}</p>
+                                    <p className="address">{address || 'ул. Петровка, 28'}</p>
                                 </div>
                             </div>
                             <div className="contact-item">
                                 <img src="/assets/svg/phone.svg" alt="Телефон" className="contact-icon" />
-                                <p className="phone">+7 (495) 694-09-30</p>
+                                <p className="phone">{phone || '+7 (495) 694-09-30'}</p>
                             </div>
                         </div>
-
                     </div>
 
-                    <div className="website-block">
-                        <a href="https://claude-monet.ru/" className="website">https://claude-monet.ru/</a>
-                    </div>
+                    {website && website !== 'https://example.com' && (
+                        <div className="website-block">
+                            <a
+                                href={website}
+                                className="website"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {website}
+                            </a>
+                        </div>
+                    )}
                 </div>
-
             </div>
         </div>
     );

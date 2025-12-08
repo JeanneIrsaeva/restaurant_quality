@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Gallery from '../../components/Gallery/Gallery';
 import RatingTable from '../../components/RatingTable/RatingTable';
@@ -11,8 +12,8 @@ import heartFilledIcon from '../../assets/icons/heart2.svg';
 import { favoritesService } from '../../utils/favorites';
 
 const VenuePage = () => {
-
-    const establishmentId = '4aaff4d5-069a-475e-a5aa-faa36b8207a0'; // La Belle Étoile
+    const { id } = useParams();
+    const establishmentId = id;
 
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -37,7 +38,6 @@ const VenuePage = () => {
         }
     ];
 
-
     useEffect(() => {
         const loadRestaurantData = async () => {
             setLoading(true);
@@ -54,13 +54,14 @@ const VenuePage = () => {
 
                     setRestaurant({
                         id: establishmentId,
-                        name: 'La Belle Étoile',
-                        description: 'Элегантный французский ресторан с панорамным видом на город',
-                        rating: 4.8,
-                        address: 'ул. Тверская, 15, Москва',
-                        contact_phone: '+7 (495) 123-45-67',
-                        contact_email: 'info@labelleetoile.ru',
-                        open_hours: '12:00-23:00'
+                        name: 'Ресторан',
+                        description: 'Описание ресторана',
+                        rating: 4.5,
+                        address: 'Адрес не указан',
+                        city: 'Москва',
+                        contact_phone: 'Телефон не указан',
+                        open_hours: '12:00-23:00',
+                        link_to: 'https://example.com'
                     });
                 }
             } catch (error) {
@@ -68,13 +69,14 @@ const VenuePage = () => {
 
                 setRestaurant({
                     id: establishmentId,
-                    name: 'La Belle Étoile',
-                    description: 'Элегантный французский ресторан с панорамным видом на город',
-                    rating: 4.8,
-                    address: 'ул. Тверская, 15, Москва',
-                    contact_phone: '+7 (495) 123-45-67',
-                    contact_email: 'info@labelleetoile.ru',
-                    open_hours: '12:00-23:00'
+                    name: 'Ресторан',
+                    description: 'Описание ресторана',
+                    rating: 4.5,
+                    address: 'Адрес не указан',
+                    city: 'Москва',
+                    contact_phone: 'Телефон не указан',
+                    open_hours: '12:00-23:00',
+                    link_to: 'https://example.com'
                 });
             } finally {
                 setLoading(false);
@@ -129,15 +131,15 @@ const VenuePage = () => {
         );
     }
 
-
     const displayData = restaurant || {
-        name: 'La Belle Étoile',
-        rating: 4.8,
-        description: 'Элегантный французский ресторан с панорамным видом на город. Меню вдохновлено французской классикой с современными акцентами.',
-        address: 'ул. Тверская, 15, Москва',
-        contact_phone: '+7 (495) 123-45-67',
-        contact_email: 'info@labelleetoile.ru',
-        open_hours: '12:00-23:00'
+        name: 'Ресторан',
+        rating: 4.5,
+        description: 'Описание ресторана',
+        address: 'Адрес не указан',
+        city: 'Москва',
+        contact_phone: 'Телефон не указан',
+        open_hours: '12:00-23:00',
+        link_to: 'https://example.com'
     };
 
     return (
@@ -155,7 +157,7 @@ const VenuePage = () => {
                         <h1 className="venue-title">{displayData.name}</h1>
                         <div className="rating">
                             <img src="/assets/svg/star.svg" alt="Рейтинг" className="star-icon" />
-                            <span className="rating-value">{displayData.rating?.toFixed(1) || '4.8'}</span>
+                            <span className="rating-value">{displayData.rating?.toFixed(1) || '4.5'}</span>
                         </div>
                     </div>
 
@@ -182,8 +184,7 @@ const VenuePage = () => {
             <div className="venue-container">
                 <section className="description-section">
                     <p className="description-text">
-                        {displayData.description ||
-                            `Меню ${displayData.name} — это гастрономическая симфония, вдохновлённая французской классикой и утончённой простотой. Здесь каждый штрих — как мазок на полотне: сливочный соус бер блан нежно оттеняет морского сибаса, тающий во рту конфи из утки раскрывает глубину вкуса, а десерт с ванильным кремом и лепестками лаванды завершает ужин лёгкой нотой Прованса. Это не просто ужин — это момент, где искусство встречается со вкусом.`}
+                        {displayData.description || 'Описание ресторана отсутствует.'}
                     </p>
 
                     <div className="recommendations-section">
@@ -218,10 +219,11 @@ const VenuePage = () => {
 
             <div className="venue-container">
                 <LocationInfo
-                    address={displayData.address || 'ул. Тверская, 15, Москва'}
-                    phone={displayData.contact_phone || '+7 (495) 123-45-67'}
-                    email={displayData.contact_email || 'info@labelleetoile.ru'}
+                    address={displayData.address || 'Адрес не указан'}
+                    city={displayData.city || 'Москва'}
+                    phone={displayData.contact_phone || 'Телефон не указан'}
                     hours={displayData.open_hours || '12:00-23:00'}
+                    website={displayData.link_to || 'https://example.com'}
                 />
             </div>
 
@@ -240,7 +242,7 @@ const VenuePage = () => {
 
                     <div className="map-block">
                         <YandexMap
-                            address={displayData.address || 'ул. Тверская, 15, Москва'}
+                            address={displayData.address || 'Адрес не указан'}
                             center={[55.7649, 37.6190]}
                             zoom={16}
                         />

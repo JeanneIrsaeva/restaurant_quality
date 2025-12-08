@@ -1,13 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Breadcrumbs.css';
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({ items }) => {
     return (
         <div className="breadcrumbs">
             <div className="breadcrumbs-container">
-                <a href="/catalog" className="breadcrumb-link">Каталог</a>
-                <span className="breadcrumb-separator">→</span>
-                <span className="breadcrumb-current">Ресторан Claude Monet</span>
+                {items.map((item, index) => (
+                    <React.Fragment key={index}>
+                        {item.path ? (
+                            <Link to={item.path} className="breadcrumb-link">
+                                {item.label}
+                            </Link>
+                        ) : (
+                            <span className="breadcrumb-current">{item.label}</span>
+                        )}
+                        {index < items.length - 1 && (
+                            <span className="breadcrumb-separator">→</span>
+                        )}
+                    </React.Fragment>
+                ))}
             </div>
         </div>
     );
