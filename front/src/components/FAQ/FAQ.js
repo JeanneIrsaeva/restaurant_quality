@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FAQ.css";
-import StrelkaImg from './../../img/icons/Strelka.svg';
+
 
 export const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -41,7 +41,7 @@ export const FAQ = () => {
               <p className="faq-question">{item.question}</p>
               <div className="faq-arrow">
                 <img
-                  src={StrelkaImg}
+                  src="/assets/svg/Strelka.svg"
                   alt="Toggle"
                   className={`arrow-icon ${activeIndex === index ? 'rotated' : ''}`}
                 />

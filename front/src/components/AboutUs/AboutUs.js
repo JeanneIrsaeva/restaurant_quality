@@ -1,5 +1,4 @@
 import React from "react";
-import AboutUsImg from './../../img/AboutUs.jpg'
 import "./AboutUs.css";
 
 export const AboutUs = () => {
@@ -21,7 +20,8 @@ export const AboutUs = () => {
             </div>
           </div>
           <div className="aboutus-image">
-            <img src={AboutUsImg} alt="Интерьер ресторана" />
+            <img src="/assets/images/AboutUs.jpg" alt="About us"
+            />
           </div>
         </div>
       </div>

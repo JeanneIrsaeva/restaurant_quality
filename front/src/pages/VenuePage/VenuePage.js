@@ -18,10 +18,13 @@ const VenuePage = () => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [loading, setLoading] = useState(false);
     const [restaurant, setRestaurant] = useState(null);
-    const galleryImages = [
-        '/assets/images/venue.jpg',
-        '/assets/images/venue2.jpg'
-    ];
+    const galleryImages = restaurant?.images
+  ? JSON.parse(restaurant.images).map(img => {
+      if (img.startsWith('/images/')) return '/assets' + img;
+      return img;
+    })
+  : ['/assets/images/venue.jpg'];
+
 
     const chefRecommendations = [
         {

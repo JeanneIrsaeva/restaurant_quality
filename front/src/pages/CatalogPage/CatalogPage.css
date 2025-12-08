@@ -1,15 +1,26 @@
 .layout-catalog {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  
   gap: 50px;
   margin-top: 90px;
+
+  max-width: 1200px;
+  width: 100%;
 }
 
 .content-catalog {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.catalog-wrapper {
+  display: flex;
+  justify-content: center; 
+  width: 100%;
 }
 
 .card {
