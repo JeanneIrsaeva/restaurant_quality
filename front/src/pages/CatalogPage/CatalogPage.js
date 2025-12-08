@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Filter } from "./../../components/Filter/Filter";
 import { RestaurantCard } from "./../../components/Card/RestaurantCard";
 import { Pagination } from "./../../components/Pagination/Pagination";
+import { SearchBar } from "./../../components/SearchBar/SearchBar";
 import "./../CatalogPage/CatalogPage.css";
 
 const PAGE_SIZE = 4;
@@ -19,6 +20,9 @@ const CatalogPage = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterOptions, setFilterOptions] = useState(filtersData);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     loadRestaurants();
@@ -61,7 +65,30 @@ const CatalogPage = () => {
     }
   };
 
-  // Функция безопасного получения изображения
+  const handleSearch = async (query) => {
+    if (!query || query.trim().length < 2) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    setIsSearching(true);
+    try {
+      const response = await fetch(
+        `http://localhost:8000/establishments/search?q=${encodeURIComponent(query)}&limit=50`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setSearchResults(data.establishments || []);
+      }
+    } catch (error) {
+      console.error("❌ Ошибка поиска:", error);
+      setSearchResults([]);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
   const getSafeImage = (images) => {
     if (!images) return '/assets/images/venue.jpg';
     try {
@@ -106,7 +133,9 @@ const CatalogPage = () => {
     });
   };
 
-  const filteredItems = applyFilters(restaurants);
+  const itemsToShow = searchQuery ? searchResults : restaurants;
+  const filteredItems = searchQuery ? itemsToShow : applyFilters(itemsToShow);
+
   const totalPages = Math.ceil(filteredItems.length / PAGE_SIZE);
   const paginatedItems = filteredItems.slice(
     (currentPage - 1) * PAGE_SIZE,
@@ -117,32 +146,53 @@ const CatalogPage = () => {
     return <div className="loading">Загрузка ресторанов...</div>;
   }
 
-  return (
-    <div className="catalog-wrapper">
-    <div className="layout-catalog">
-      <Filter filters={filterOptions} onChange={setFilters} />
-      <main className="content-catalog">
-        {paginatedItems.map((r) => (
-          <RestaurantCard
-            key={r.id}
-            restaurant={{
-              id: r.id,
-              name: r.name || 'Без названия',
-              country: r.country?.name || r.country || 'Не указано',
-              city: r.city || 'Не указано',
-              image: getSafeImage(r.images)
-            }}
-          />
-        ))}
+    return (
+      <div className="catalog-wrapper">
+  <div className="search-container">
+    <SearchBar
+      onSearch={(query) => {
+        setSearchQuery(query);
+        handleSearch(query);
+      }}
+      placeholder="Ищите интересующее вас заведение"
+    />
+  </div>
+
+  <div className="layout-catalog">
+    <Filter filters={filterOptions} onChange={setFilters} />
+    <main className="content-catalog">
+      {isSearching && <div className="loading">Поиск...</div>}
+
+      {!isSearching && paginatedItems.map((r) => (
+        <RestaurantCard
+          key={r.id}
+          restaurant={{
+            id: r.id,
+            name: r.name || 'Без названия',
+            country: r.country?.name || r.country || 'Не указано',
+            city: r.city || 'Не указано',
+            image: getSafeImage(r.images)
+          }}
+        />
+      ))}
+
+      {!searchQuery && (
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={setCurrentPage}
         />
+      )}
+
+      {searchQuery && !isSearching && paginatedItems.length === 0 && (
+        <div className="no-results">
+          По запросу «{searchQuery}» ничего не найдено.
+        </div>
+      )}
       </main>
     </div>
-    </div>
-  );
+  </div>
+    );
 };
 
 export default CatalogPage;
