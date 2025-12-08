@@ -59,6 +59,19 @@
   cursor: pointer;
 }
 
+.loading, .no-results {
+  color: #c0b193;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.no-results {
+  opacity: 0.7;
+}
+
 @media (max-width: 1440px) {
   .layout-catalog {
     flex-direction: column;
