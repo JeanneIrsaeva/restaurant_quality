@@ -1,0 +1,39 @@
+.audience-block {
+  position: relative;
+  height: 527px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
+}
+
+.audience-title {
+  position: absolute;
+  top: 90px;
+  left: 180px;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 56px;
+  color: #c0b193;
+}
+
+.audience-subtitle {
+  position: absolute;
+  top: 180px;
+  left: 180px;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #c0b193;
+}
+
+.audience-text {
+  position: absolute;
+  top: 229px;
+  left: 180px;
+  width: 1080px;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #c0b193;
+  line-height: 1.5;
+  white-space: pre-line;
+}

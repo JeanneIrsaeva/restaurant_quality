@@ -1,0 +1,23 @@
+.principle-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  width: 260px; /* фиксированная ширина карточки */
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.principle-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #c0b193;
+  margin-bottom: 15px;
+}
+
+.principle-card p {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #c0b193;
+  margin: 0;
+}
