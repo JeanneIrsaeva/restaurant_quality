@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./PromoSection.css";
-import placeholderImg from './../../img/placeholder.jpg'
 
 export const PromoSection = () => {
   return (
@@ -21,7 +20,7 @@ export const PromoSection = () => {
         </div>
         <div className="promo-image">
           <div className="image-overlay">
-            <img src={placeholderImg} alt="Premium restaurant interior" />
+            <img src="/assets/images/placeholder.jpg" alt="Promo" />
           </div>
         </div>
       </div>

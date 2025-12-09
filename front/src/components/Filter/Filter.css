@@ -4,6 +4,7 @@
   color: #c0b193;
   background: rgba(255, 255, 255, 0.05);
   font-family: "Playfair Display", serif;
+  flex-shrink: 0;
 }
 
 .filter-block {

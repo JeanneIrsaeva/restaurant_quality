@@ -22,7 +22,11 @@ const Gallery = ({ images }) => {
                 <div className="gallery-image">
                     <img
                         src={images[currentImageIndex]}
-                        alt="Ресторан Claude Monet"
+                        alt="Ресторан скоро добавит фото"
+                        onError={(e) => {
+                            e.target.src = '/assets/images/venue.jpg'; 
+                            e.target.onerror = null;
+                        }}
                     />
                 </div>
 

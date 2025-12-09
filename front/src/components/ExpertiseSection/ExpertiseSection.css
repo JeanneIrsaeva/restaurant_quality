@@ -1,23 +1,26 @@
 .expertise-section {
   background: #0d1c22;
-  min-height: 527px;
+  /* min-height: 527px; */
+  height: 1150px;
   border-bottom: 1px solid rgba(192, 177, 147, 0.35);
   position: relative;
 }
 
 .expertise-container {
-  max-width: 1080px;
   margin: 0 auto;
   padding: 0 180px;
   position: relative;
 }
 
 .expertise-title {
+  max-width: 646px;
+  margin-bottom: 25px;
   font-family: "Playfair Display", serif;
   font-weight: 500;
   font-size: 56px;
   color: #c0b193;
   position: absolute;
+  line-height: 1.5;
   top: 90px;
   left: 180px;
 }
@@ -39,7 +42,7 @@
   left: 50%;
   transform: translateX(-50%);
   flex-direction: column;
-  gap: 25px;
+  align-items: center;
   width: 762px;
 }
 
@@ -57,6 +60,17 @@
 
 .expertise-form .search-bar::placeholder {
   color: #c0b19359;
+}
+
+.expertise-form .form-note {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  color: #c0b193;
+  text-align: center;
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .expertise-form .promo-button {
@@ -79,7 +93,26 @@
   background: rgba(192, 177, 147, 0.1);
 }
 
-/* Адаптив */
+.expertise-button-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.expertise-button-wrapper .promo-button {
+  width: 273px;
+}
+
+.expertise-button-wrapper .form-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #c0b193;
+  max-width: 600px;
+}
+
 @media (max-width: 1440px) {
   .expertise-container {
     padding: 0 100px;

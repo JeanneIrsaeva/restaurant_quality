@@ -95,9 +95,16 @@ const ExpertiseSection = () => {
             value={formData.email}
             onChange={handleChange}
           />
-          <button className="promo-button" onClick={handleSubmit}>
-            Подать заявку
-          </button>
+          <div className="expertise-button-wrapper ">
+            <button className="promo-button" onClick={handleSubmit}>
+              Подать заявку
+            </button>
+          </div>
+          <p className="form-note">
+            Нажимая кнопку «Подать заявку», вы соглашаетесь с политикой
+            конфиденциальности и даете согласие на обработку персональных
+            данных.
+          </p>
         </div>
       </div>
     </section>

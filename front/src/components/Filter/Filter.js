@@ -45,25 +45,17 @@ export const Filter = ({ filters, onChange }) => {
     </button>
   );
 
-  const tagCategories = ["Кухня", "Атмосфера", "Особенности"];
-
   return (
     <aside className="sidebar">
       {Object.keys(filters).map((cat) => (
         <div className="filter-block" key={cat}>
           <div className="filter-title">{cat}</div>
-          <div
-            className={`filter-box ${
-              cat === "Рейтинг" || cat === "Страна" ? "column" : "row"
-            }`}
-          >
-            {cat === "Тэги"
-              ? null
-              : cat === "Рейтинг"
-              ? filters[cat].map((val) => renderCheckbox(cat, val, true))
-              : tagCategories.includes(cat)
+          <div className={`filter-box ${cat === "Рейтинг" || cat === "Страна" ? "column" : "row"}`}>
+            {cat === "Рейтинг" || cat === "Страна" || cat === "Тип заведения"
+              ? filters[cat].map((val) => renderCheckbox(cat, val, cat === "Рейтинг"))
+              : cat === "Тэги"
               ? filters[cat].map((val) => renderTag(cat, val))
-              : filters[cat].map((val) => renderCheckbox(cat, val))}
+              : null}
           </div>
         </div>
       ))}

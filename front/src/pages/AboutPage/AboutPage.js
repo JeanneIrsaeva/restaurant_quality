@@ -14,7 +14,7 @@ const AboutPage = () => {
       <PrinciplesBlock />
       <AudienceBlock />
       <ExpertiseSection />
-      {/* <QuestionsBlock /> */}
+      <QuestionsBlock />
     </div>
   );
 };

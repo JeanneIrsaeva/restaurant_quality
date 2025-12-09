@@ -2,7 +2,6 @@
   position: relative;
   height: 695px;
   margin: 0 auto 60px;
-  border-top: 1px solid rgba(192, 177, 147, 0.35);
   border-bottom: 1px solid rgba(192, 177, 147, 0.35);
 }
 
@@ -25,10 +24,10 @@
 
 .principles-background {
   position: absolute;
-  top: 88px;
-  left: 225px;
-  width: 990px;
-  height: 520px;
+  top: 293px;
+  left: 405px;
+  width: 600px;
+  height: 230px;
   z-index: 1;
 }
 
@@ -36,6 +35,8 @@
   position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 900px) {
