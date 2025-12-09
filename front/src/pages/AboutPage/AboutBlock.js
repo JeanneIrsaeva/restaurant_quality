@@ -1,5 +1,5 @@
 import React from "react";
-import aboutImage from "./../../img/AboutUs.jpg";
+// import aboutImage from "./../../img/AboutUs.jpg";
 import "./AboutBlock.css";
 
 const AboutBlock = () => {
@@ -29,7 +29,7 @@ const AboutBlock = () => {
         </div>
 
         <div className="about-image">
-          <img src={aboutImage} alt="О нас" />
+          <img src="/assets/images/AboutUs.jpg" alt="О нас" />
         </div>
       </section>
     </div>
