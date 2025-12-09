@@ -1,4 +1,5 @@
 import React from "react";
+import AboutUsImg from "./../../assets/icons/AboutUs.jpg";
 import "./AboutUs.css";
 
 export const AboutUs = () => {
@@ -24,7 +25,7 @@ export const AboutUs = () => {
             </div>
           </div>
           <div className="aboutus-image">
-            <img src="/assets/images/AboutUs.jpg" alt="About us" />
+            <img src={AboutUsImg} alt="About Us" />
           </div>
         </div>
       </div>
