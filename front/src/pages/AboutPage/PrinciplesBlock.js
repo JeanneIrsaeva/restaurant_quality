@@ -1,10 +1,6 @@
 import React from "react";
 import PrincipleCard from "./../../components/PrincipleCard/PrincipleCard";
 import principlesBackground from "./../../assets/icons/background_rectangle.svg";
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/US-9
 import "./PrinciplesBlock.css";
 
 const PrinciplesBlock = () => {
