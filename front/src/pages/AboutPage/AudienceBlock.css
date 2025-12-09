@@ -26,7 +26,6 @@
   max-width: 1080px;
   color: #c0b193;
 }
-
 .audience-text {
   position: absolute;
   top: 229px;
@@ -36,6 +35,11 @@
   font-weight: 500;
   font-size: 24px;
   color: #c0b193;
-  line-height: 1.5;
-  white-space: pre-line;
+  line-height: 1.8;
+  padding-left: 40px; /* увеличиваем, чтобы точки были видны */
+  list-style-position: outside; /* важно, чтобы точки не накладывались на текст */
+  list-style-type: disc; /* стандартные точки */
+}
+.audience-text li {
+  margin-bottom: 16px; /* расстояние между пунктами */
 }

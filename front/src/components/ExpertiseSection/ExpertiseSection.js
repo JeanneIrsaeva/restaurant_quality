@@ -14,7 +14,7 @@ const ExpertiseSection = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { name, city, contactPerson, phone, email } = formData;
 
     // Проверка на пустые поля
@@ -30,18 +30,46 @@ const ExpertiseSection = () => {
       return;
     }
 
-    // Здесь можно отправлять данные на сервер
-    console.log("Данные заявки:", formData);
-    alert("Заявка успешно отправлена");
+    // Проверка корректности телефона
+    const phoneRegex =
+      /^(\+7|8)?\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
 
-    // Очистка формы
-    setFormData({
-      name: "",
-      city: "",
-      contactPerson: "",
-      phone: "",
-      email: "",
-    });
+    if (!phoneRegex.test(phone)) {
+      alert("Введите корректный номер телефона");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/applications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          city,
+          contact_person: contactPerson,
+          contact_phone: phone,
+          contact_email: email,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message);
+        setFormData({
+          name: "",
+          city: "",
+          contactPerson: "",
+          phone: "",
+          email: "",
+        });
+      } else {
+        alert(data.detail || "Ошибка при отправке заявки");
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке заявки:", error);
+      alert("Ошибка при отправке заявки. Попробуйте позже.");
+    }
   };
 
   return (

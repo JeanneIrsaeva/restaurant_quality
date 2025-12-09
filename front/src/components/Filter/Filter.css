@@ -5,6 +5,9 @@
   background: rgba(255, 255, 255, 0.05);
   font-family: "Playfair Display", serif;
   flex-shrink: 0;
+  box-sizing: border-box;
+  margin-bottom: 90px;
+
 }
 
 .filter-block {
@@ -47,11 +50,19 @@
   cursor: pointer;
   display: grid;
   place-items: center;
+  box-sizing: border-box;
 }
 
 .filter-option input[type="checkbox"]:checked {
   background: rgba(192, 177, 147, 0.35);
   border: 1px solid rgba(192, 177, 147, 0.7);
+}
+
+.filter-option input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: #c0b193;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .filter-stars {
@@ -64,12 +75,69 @@
   font-weight: 400;
   padding: 5px 15px;
   background: rgba(192, 177, 147, 0.05);
-  border: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.tag-btn:hover {
+  background: rgba(192, 177, 147, 0.1);
 }
 
 .tag-btn.active {
   background: rgba(192, 177, 147, 0.15);
   border: 1px solid rgba(192, 177, 147, 0.35);
+}
+
+@media (max-width: 1440px) {
+  .sidebar {
+    width: 100%;
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .filter-block {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    padding: 15px;
+  }
+
+  .filter-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .filter-option {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .filter-option input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .filter-option input[type="checkbox"]:checked::after {
+    font-size: 14px;
+  }
+
+  .filter-stars {
+    font-size: 24px;
+  }
+
+  .tag-btn {
+    font-size: 18px;
+    padding: 4px 12px;
+  }
+
+  .filter-block {
+    margin-bottom: 25px;
+  }
 }
