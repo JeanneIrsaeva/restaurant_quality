@@ -1,8 +1,6 @@
 .expertise-section {
   background: #0d1c22;
-  /* min-height: 527px; */
   height: 1150px;
-  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
   position: relative;
 }
 
@@ -123,9 +121,11 @@
   .expertise-container {
     padding: 0 60px;
   }
+
   .expertise-title {
     font-size: 48px;
   }
+
   .expertise-description {
     font-size: 22px;
   }
@@ -135,6 +135,7 @@
   .expertise-container {
     padding: 0 40px;
   }
+
   .expertise-title {
     font-size: 42px;
     left: 50%;
@@ -142,6 +143,7 @@
     top: 50px;
     text-align: center;
   }
+
   .expertise-description {
     font-size: 20px;
     left: 50%;
@@ -150,6 +152,7 @@
     text-align: center;
     top: 130px;
   }
+
   .expertise-form {
     top: 220px;
     width: 100%;
@@ -161,13 +164,16 @@
   .expertise-title {
     font-size: 36px;
   }
+
   .expertise-description {
     font-size: 18px;
   }
+
   .expertise-form .search-bar {
     font-size: 18px;
     height: 56px;
   }
+
   .expertise-form .promo-button {
     font-size: 20px;
     height: 56px;

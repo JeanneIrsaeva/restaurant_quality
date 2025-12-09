@@ -2,7 +2,7 @@ import React from "react";
 import AboutBlock from "./AboutBlock";
 import PrinciplesBlock from "./PrinciplesBlock";
 import AudienceBlock from "./AudienceBlock";
-import QuestionsBlock from "./QuestionsBlock";
+import { Contact } from "./../../components/Contact/Contact.js";
 import ExpertiseSection from "./../../components/ExpertiseSection/ExpertiseSection";
 
 import "./AboutPage.css";
@@ -14,7 +14,7 @@ const AboutPage = () => {
       <PrinciplesBlock />
       <AudienceBlock />
       <ExpertiseSection />
-      <QuestionsBlock />
+      <Contact />
     </div>
   );
 };

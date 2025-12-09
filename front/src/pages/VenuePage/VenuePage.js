@@ -6,9 +6,6 @@ import RatingTable from '../../components/RatingTable/RatingTable';
 import LocationInfo from '../../components/LocationInfo/LocationInfo';
 import YandexMap from '../../components/YandexMap/YandexMap';
 import './VenuePage.css';
-
-import likeIcon from '../../assets/icons/like.svg';
-import heartFilledIcon from '../../assets/icons/heart2.svg';
 import { favoritesService } from '../../utils/favorites';
 
 const VenuePage = () => {
@@ -19,11 +16,11 @@ const VenuePage = () => {
     const [loading, setLoading] = useState(false);
     const [restaurant, setRestaurant] = useState(null);
     const galleryImages = restaurant?.images
-  ? JSON.parse(restaurant.images).map(img => {
-      if (img.startsWith('/images/')) return '/assets' + img;
-      return img;
-    })
-  : ['/assets/images/venue.jpg'];
+        ? JSON.parse(restaurant.images).map(img => {
+            if (img.startsWith('/images/')) return '/assets' + img;
+            return img;
+        })
+        : ['/assets/images/venue.jpg'];
 
 
     const chefRecommendations = [
@@ -171,7 +168,7 @@ const VenuePage = () => {
                         aria-label={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
                     >
                         <img
-                            src={isFavorite ? heartFilledIcon : likeIcon}
+                            src={isFavorite ? '/assets/svg/icons/heart2.svg' : '/assets/svg/icons/like.svg'}
                             alt={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
                             width="32"
                             height="32"

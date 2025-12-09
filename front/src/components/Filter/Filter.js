@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Filter.css";
-import StarIcon from "../../assets/icons/icon-star.svg";
+
 
 export const Filter = ({ filters, onChange }) => {
   const initialSelected = {};
@@ -26,7 +26,7 @@ export const Filter = ({ filters, onChange }) => {
       {isStars ? (
         <span className="filter-stars">
           {Array.from({ length: value }).map((_, idx) => (
-            <img key={idx} src={StarIcon} alt="звезда" className="star-icon" />
+            <img key={idx} src="/assets/svg//icons/icon-star.svg" alt="звезда" className="star-icon" />
           ))}
         </span>
       ) : (
@@ -54,8 +54,8 @@ export const Filter = ({ filters, onChange }) => {
             {cat === "Рейтинг" || cat === "Страна" || cat === "Тип заведения"
               ? filters[cat].map((val) => renderCheckbox(cat, val, cat === "Рейтинг"))
               : cat === "Тэги"
-              ? filters[cat].map((val) => renderTag(cat, val))
-              : null}
+                ? filters[cat].map((val) => renderTag(cat, val))
+                : null}
           </div>
         </div>
       ))}

@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./RestaurantCard.css";
-import likeImg from "../../assets/icons/like.svg";
-import heartFilledIcon from "../../assets/icons/heart2.svg";
-import { favoritesService } from "../../utils/favorites";
 
 export const RestaurantCard = ({ restaurant, onRemove }) => {
   const { id, name, country, city, image } = restaurant;
@@ -12,8 +9,9 @@ export const RestaurantCard = ({ restaurant, onRemove }) => {
 
   useEffect(() => {
     if (id) {
-      const favoriteStatus = favoritesService.isFavorite(id);
-      setIsFavorite(favoriteStatus);
+      // Проверяем через localStorage напрямую
+      const favorites = JSON.parse(localStorage.getItem('verve_favorites')) || [];
+      setIsFavorite(favorites.includes(id.toString()));
     }
   }, [id]);
 
@@ -21,16 +19,22 @@ export const RestaurantCard = ({ restaurant, onRemove }) => {
     e.preventDefault();
     e.stopPropagation();
 
+    let favorites = JSON.parse(localStorage.getItem('verve_favorites')) || [];
+
     if (isFavorite) {
-      favoritesService.remove(id);
+      favorites = favorites.filter(favId => favId !== id.toString());
       setIsFavorite(false);
       if (onRemove) {
         onRemove(id);
       }
     } else {
-      favoritesService.add(id);
+      if (!favorites.includes(id.toString())) {
+        favorites.push(id.toString());
+      }
       setIsFavorite(true);
     }
+
+    localStorage.setItem('verve_favorites', JSON.stringify(favorites));
   };
 
   const handleImageError = (e) => {
@@ -45,7 +49,7 @@ export const RestaurantCard = ({ restaurant, onRemove }) => {
         <div className="card">
           <div className="card__thumb">
             <img
-              src={image}
+              src={image || '/assets/images/venue.jpg'}
               alt={name}
               onError={handleImageError}
               loading="lazy"
@@ -66,7 +70,7 @@ export const RestaurantCard = ({ restaurant, onRemove }) => {
       >
         <img
           className="card__like"
-          src={isFavorite ? heartFilledIcon : likeImg}
+          src={isFavorite ? '/assets/svg/icons/heart2.svg' : '/assets/svg/icons/like.svg'}
           alt={isFavorite ? "Удалить из избранного" : "Добавить в избранное"}
           width="32"
           height="32"
