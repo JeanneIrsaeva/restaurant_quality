@@ -1,9 +1,16 @@
+.about-container-border {
+  height: 888px;
+  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
+}
 .about-container {
   position: relative;
-  max-width: 1080px;
-  height: 695px;
+  height: 888px;
   margin: 0 auto;
+  padding-left: 180px;
+  padding-right: 180px;
+  box-sizing: border-box;
 }
+
 .about-block {
   display: flex;
   align-items: center;
@@ -16,13 +23,13 @@
 }
 
 .about-text h1 {
-  font-size: 36px;
+  font-size: 56px;
   margin-bottom: 20px;
   color: #c0b193;
 }
 
 .about-text p {
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1.6;
   margin-bottom: 18px;
   color: #c0b193;
