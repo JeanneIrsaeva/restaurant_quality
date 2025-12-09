@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
+// import aboutImage from "./../../img/AboutUs.jpg";
+=======
 import aboutImage from "./../../assets/icons/AboutUs.jpg";
+>>>>>>> feature/US-9
 import "./AboutBlock.css";
 
 const AboutBlock = () => {
@@ -29,11 +33,18 @@ const AboutBlock = () => {
             </p>
           </div>
 
+<<<<<<< HEAD
+        <div className="about-image">
+          <img src="/assets/images/AboutUs.jpg" alt="О нас" />
+        </div>
+      </section>
+=======
           <div className="about-image">
             <img src={aboutImage} alt="О нас" />
           </div>
         </section>
       </div>
+>>>>>>> feature/US-9
     </div>
   );
 };
