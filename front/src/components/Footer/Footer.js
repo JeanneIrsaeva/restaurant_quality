@@ -1,40 +1,53 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const Footer = () => {
-    return (
-        <footer className="footer">
-            <div className="footer-top">
-                <div className="footer-container">
-                    <div className="footer-logo">
-                        <img src="/assets/svg/logo.svg" alt="CityGuide" className="logo-img" />
-                    </div>
-                    <nav className="footer-nav">
-                        <a href="/" className="footer-nav-link">Главная</a>
-                        <a href="/catalog" className="footer-nav-link">Каталог</a>
-                        <a href="/about" className="footer-nav-link">О нас</a>
-                    </nav>
+  return (
+    <footer className="footer">
+      <div className="footer-top">
+        <div className="footer-container">
+          <div className="footer-logo">
+            <Link to="/">
+              <img
+                src="/assets/svg/logo.svg"
+                alt="CityGuide"
+                className="logo-img"
+              />
+            </Link>
+          </div>
+          <nav className="footer-nav">
+            <a href="/" className="footer-nav-link">
+              Главная
+            </a>
+            <a href="/catalog" className="footer-nav-link">
+              Каталог
+            </a>
+            <a href="/about" className="footer-nav-link">
+              О нас
+            </a>
+          </nav>
 
-                    <div className="footer-email">
-                        <span className="email-text">example@mail.ru</span>
-                    </div>
-                </div>
-            </div>
+          <div className="footer-email">
+            <span className="email-text">example@mail.ru</span>
+          </div>
+        </div>
+      </div>
 
-            <div className="footer-divider"></div>
+      <div className="footer-divider"></div>
 
-            <div className="footer-bottom">
-                <div className="footer-container">
-                    <div className="copyright">
-                        © Loga 2025. Все права защищены.
-                    </div>
-                    <div className="privacy">
-                        <a href="/privacy" className="privacy-link">Политика конфиденциальности</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+      <div className="footer-bottom">
+        <div className="footer-container">
+          <div className="copyright">© Loga 2025. Все права защищены.</div>
+          <div className="privacy">
+            <a href="/privacy" className="privacy-link">
+              Политика конфиденциальности
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
