@@ -1,28 +1,25 @@
 .expertise-section {
   background: #0d1c22;
-  /* min-height: 527px; */
-  height: 1150px;
-  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
   position: relative;
+  padding: 90px 0;
+  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
 }
 
-.expertise-container {
+.expertise-wrapper {
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 180px;
   position: relative;
+  padding: 0 180px;
+  box-sizing: border-box;
 }
 
 .expertise-title {
-  max-width: 646px;
-  margin-bottom: 25px;
   font-family: "Playfair Display", serif;
   font-weight: 500;
   font-size: 56px;
   color: #c0b193;
-  position: absolute;
-  line-height: 1.5;
-  top: 90px;
-  left: 180px;
+  margin-bottom: 25px;
 }
 
 .expertise-description {
@@ -30,20 +27,18 @@
   font-weight: 500;
   font-size: 24px;
   color: #c0b193;
-  position: absolute;
-  top: 265px;
-  left: 180px;
-  width: 1080px;
+  line-height: 1.5;
+  max-width: 1080px;
+  margin-bottom: 60px;
 }
 
 .expertise-form {
-  position: absolute;
-  top: 368px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
   flex-direction: column;
   align-items: center;
-  width: 762px;
+  width: 100%;
+  max-width: 762px;
+  margin: 0 auto;
 }
 
 .expertise-form .search-bar {
@@ -56,25 +51,22 @@
   color: #c0b193;
   padding: 0 20px;
   outline: none;
+  margin-bottom: 20px;
 }
 
 .expertise-form .search-bar::placeholder {
   color: #c0b19359;
 }
 
-.expertise-form .form-note {
-  font-family: "Playfair Display", serif;
-  font-size: 16px;
-  color: #c0b193;
-  text-align: center;
+.expertise-button-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.expertise-form .promo-button {
-  margin-top: 40px;
+.expertise-button-wrapper .promo-button {
   width: 273px;
   display: inline-flex;
   align-items: center;
@@ -89,71 +81,52 @@
   transition: all 0.3s ease;
 }
 
-.expertise-form .promo-button:hover {
+.expertise-button-wrapper .promo-button:hover {
   background: rgba(192, 177, 147, 0.1);
 }
 
-.expertise-button-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.expertise-button-wrapper .promo-button {
-  width: 273px;
-}
-
 .expertise-button-wrapper .form-note {
-  margin-top: 20px;
-  text-align: center;
+  font-family: "Playfair Display", serif;
   font-size: 16px;
   color: #c0b193;
+  text-align: center;
+  margin-top: 20px;
   max-width: 600px;
 }
 
 @media (max-width: 1440px) {
-  .expertise-container {
+  .expertise-wrapper {
     padding: 0 100px;
   }
 }
 
 @media (max-width: 1200px) {
-  .expertise-container {
+  .expertise-wrapper {
     padding: 0 60px;
   }
+
   .expertise-title {
     font-size: 48px;
   }
+
   .expertise-description {
     font-size: 22px;
   }
 }
 
 @media (max-width: 992px) {
-  .expertise-container {
+  .expertise-wrapper {
     padding: 0 40px;
   }
+
   .expertise-title {
     font-size: 42px;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50px;
     text-align: center;
   }
+
   .expertise-description {
     font-size: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
     text-align: center;
-    top: 130px;
-  }
-  .expertise-form {
-    top: 220px;
-    width: 100%;
-    max-width: 762px;
   }
 }
 
@@ -161,14 +134,17 @@
   .expertise-title {
     font-size: 36px;
   }
+
   .expertise-description {
     font-size: 18px;
   }
+
   .expertise-form .search-bar {
     font-size: 18px;
     height: 56px;
   }
-  .expertise-form .promo-button {
+
+  .expertise-button-wrapper .promo-button {
     font-size: 20px;
     height: 56px;
   }

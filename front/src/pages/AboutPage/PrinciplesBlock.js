@@ -6,7 +6,7 @@ import "./PrinciplesBlock.css";
 const PrinciplesBlock = () => {
   return (
     <div className="principles-container">
-      <section className="principles-block">
+      <div className="principles-wrapper">
         <h2 className="principles-title">Наши принципы</h2>
 
         <img
@@ -37,7 +37,7 @@ const PrinciplesBlock = () => {
             style={{ position: "absolute", top: "430px", left: "975px" }}
           />
         </div>
-      </section>
+      </div>
     </div>
   );
 };

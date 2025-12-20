@@ -3,6 +3,7 @@ import { Filter } from "./../../components/Filter/Filter";
 import { RestaurantCard } from "./../../components/Card/RestaurantCard";
 import { Pagination } from "./../../components/Pagination/Pagination";
 import { SearchBar } from "./../../components/SearchBar/SearchBar";
+import { Contact } from "./../../components/Contact/Contact.js";
 import "./../CatalogPage/CatalogPage.css";
 
 const PAGE_SIZE = 4;
@@ -146,53 +147,57 @@ const CatalogPage = () => {
     return <div className="loading">Загрузка ресторанов...</div>;
   }
 
-    return (
-      <div className="catalog-wrapper">
-  <div className="search-container">
-    <SearchBar
-      onSearch={(query) => {
-        setSearchQuery(query);
-        handleSearch(query);
-      }}
-      placeholder="Ищите интересующее вас заведение"
-    />
-  </div>
-
-  <div className="layout-catalog">
-    <Filter filters={filterOptions} onChange={setFilters} />
-    <main className="content-catalog">
-      {isSearching && <div className="loading">Поиск...</div>}
-
-      {!isSearching && paginatedItems.map((r) => (
-        <RestaurantCard
-          key={r.id}
-          restaurant={{
-            id: r.id,
-            name: r.name || 'Без названия',
-            country: r.country?.name || r.country || 'Не указано',
-            city: r.city || 'Не указано',
-            image: getSafeImage(r.images)
+  return (
+    <div className="catalog-wrapper">
+      <div className="search-container">
+        <SearchBar
+          onSearch={(query) => {
+            setSearchQuery(query);
+            handleSearch(query);
           }}
+          placeholder="Ищите интересующее вас заведение"
         />
-      ))}
+      </div>
 
-      {!searchQuery && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
-      )}
+      <div className="layout-catalog">
+        <Filter filters={filterOptions} onChange={setFilters} />
+        <main className="content-catalog">
+          {isSearching && <div className="loading">Поиск...</div>}
 
-      {searchQuery && !isSearching && paginatedItems.length === 0 && (
-        <div className="no-results">
-          По запросу «{searchQuery}» ничего не найдено.
-        </div>
-      )}
-      </main>
+          {!isSearching && paginatedItems.map((r) => (
+            <RestaurantCard
+              key={r.id}
+              restaurant={{
+                id: r.id,
+                name: r.name || 'Без названия',
+                country: r.country?.name || r.country || 'Не указано',
+                city: r.city || 'Не указано',
+                image: getSafeImage(r.images)
+              }}
+            />
+          ))}
+
+          {!searchQuery && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+
+          {searchQuery && !isSearching && paginatedItems.length === 0 && (
+            <div className="no-results">
+              По запросу «{searchQuery}» ничего не найдено.
+            </div>
+          )}
+
+        </main>
+
+
+      </div>
+      <Contact />
     </div>
-  </div>
-    );
+  );
 };
 
 export default CatalogPage;

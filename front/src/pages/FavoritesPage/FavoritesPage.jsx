@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { favoritesService } from '../../utils/favorites';
 import { RestaurantCard } from '../../components/Card/RestaurantCard';
-import heartFilledIcon from '../../assets/icons/heart2.svg';
 import './FavoritesPage.css';
 
 const FavoritesPage = () => {
@@ -47,7 +46,7 @@ const FavoritesPage = () => {
                 {restaurants.length === 0 ? (
                     <div className="favorites-empty">
                         <img
-                            src={heartFilledIcon}
+                            src="/assets/svg/icons/heart2.svg"
                             alt="Пустое избранное"
                             className="empty-icon"
                         />

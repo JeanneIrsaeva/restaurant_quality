@@ -17,24 +17,20 @@ const ExpertiseSection = () => {
   const handleSubmit = () => {
     const { name, city, contactPerson, phone, email } = formData;
 
-    // Проверка на пустые поля
     if (!name || !city || !contactPerson || !phone || !email) {
       alert("Пожалуйста, заполните все поля!");
       return;
     }
 
-    // Проверка корректности Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("Введите корректный Email");
       return;
     }
 
-    // Здесь можно отправлять данные на сервер
     console.log("Данные заявки:", formData);
     alert("Заявка успешно отправлена");
 
-    // Очистка формы
     setFormData({
       name: "",
       city: "",
@@ -46,7 +42,7 @@ const ExpertiseSection = () => {
 
   return (
     <section className="expertise-section">
-      <div className="expertise-container">
+      <div className="expertise-wrapper">
         <h2 className="expertise-title">Экспертиза для вашего заведения</h2>
         <p className="expertise-description">
           Мы проводим объективную оценку премиальных ресторанов, баров и
@@ -95,16 +91,16 @@ const ExpertiseSection = () => {
             value={formData.email}
             onChange={handleChange}
           />
-          <div className="expertise-button-wrapper ">
+          <div className="expertise-button-wrapper">
             <button className="promo-button" onClick={handleSubmit}>
               Подать заявку
             </button>
+            <p className="form-note">
+              Нажимая кнопку «Подать заявку», вы соглашаетесь с политикой
+              конфиденциальности и даете согласие на обработку персональных
+              данных.
+            </p>
           </div>
-          <p className="form-note">
-            Нажимая кнопку «Подать заявку», вы соглашаетесь с политикой
-            конфиденциальности и даете согласие на обработку персональных
-            данных.
-          </p>
         </div>
       </div>
     </section>

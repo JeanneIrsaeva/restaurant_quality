@@ -1,7 +1,9 @@
 .contact-section {
   padding: 90px 0;
+  width: 100%;
+  border-top: 1px solid rgba(192, 177, 147, 0.35);
   background: #0D1C22;
-  border-bottom: 1px solid rgba(192, 177, 147, 0.35);
+
 }
 
 .contact-container {
